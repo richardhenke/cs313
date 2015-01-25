@@ -16,7 +16,7 @@
 			</ul>
 		</div>
 		<div class="main_content">
-			<h2>Content coming soon!</h2>
+			<h2><a href="assignments/survey.php">Survey</a></h2>
 		</div>
 	</div>
 </body>
