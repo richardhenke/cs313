@@ -1,0 +1,128 @@
+/*---------------
+       Body
+----------------*/
+body {}
+
+/*--------------------------------
+          Links (general)
+----------------------------------*/
+a {text-decoration: none;}
+a:link {color:black;}         /* unvisited link */
+a:visited {color:black;}      /* visited link */   
+a:hover {color:#47E9FF;}      /* mouse over link */
+a:active {color:#47E9FF;}     /* selected link */
+/*--------------------------------
+            Colors
+----------------------------------*/
+body {background-color: black;}
+.main_content {	background-image:url('dark_texture_2.png');}
+.main_content P {color:#95A7BC;}
+h2 {color:#D6DEE1;}
+#main_nav {background: #a90329; /* Old browsers */
+background: -moz-linear-gradient(top,  #a90329 52%, #6d0019 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(52%,#a90329), color-stop(100%,#6d0019)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #a90329 52%,#6d0019 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #a90329 52%,#6d0019 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #a90329 52%,#6d0019 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #a90329 52%,#6d0019 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019',GradientType=0 ); /* IE6-9 */
+}
+#main_nav li:hover {background: rgb(208,228,247); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(208,228,247,1) 0%, rgba(115,177,231,1) 16%, rgba(10,119,213,1) 39%, rgba(83,159,225,1) 93%, rgba(135,188,234,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(208,228,247,1)), color-stop(16%,rgba(115,177,231,1)), color-stop(39%,rgba(10,119,213,1)), color-stop(93%,rgba(83,159,225,1)), color-stop(100%,rgba(135,188,234,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(208,228,247,1) 0%,rgba(115,177,231,1) 16%,rgba(10,119,213,1) 39%,rgba(83,159,225,1) 93%,rgba(135,188,234,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(208,228,247,1) 0%,rgba(115,177,231,1) 16%,rgba(10,119,213,1) 39%,rgba(83,159,225,1) 93%,rgba(135,188,234,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(208,228,247,1) 0%,rgba(115,177,231,1) 16%,rgba(10,119,213,1) 39%,rgba(83,159,225,1) 93%,rgba(135,188,234,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(208,228,247,1) 0%,rgba(115,177,231,1) 16%,rgba(10,119,213,1) 39%,rgba(83,159,225,1) 93%,rgba(135,188,234,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d0e4f7', endColorstr='#87bcea',GradientType=0 ); /* IE6-9 */
+}
+
+
+/*--------------------------------
+        HEADERS Sizes h1-h6
+----------------------------------*/
+h1 {
+   font-size: 16px;
+   font-size: 1.8em;
+}
+h2 {
+   font-size: 16px;
+   font-size: 1.5em;
+}
+h3 {
+   font-size: 16px;
+   font-size: 1.4em;
+}
+h4 {
+   font-size: 16px;
+   font-size: 1.3em;
+}
+h5 {
+   font-size: 16px;
+   font-size: 1.2em;
+}
+h6 {
+   font-size: 16px;
+   font-size: 1.1em;
+}
+
+body {
+margin-bottom:2%;
+margin-top:2%}
+
+/*---------------
+  Main Wrapper
+----------------*/
+#wrapper_body {}
+/*---------------
+  Main Nav
+----------------*/
+#main_nav {
+	width: 50%;
+	margin:auto;
+	padding: 10px;
+	border-radius:15px 15px 0px 0px;
+	border-left:5px solid white;
+	border-right:5px solid white;
+	border-left:5px solid white;
+	border-top:5px solid white;
+}
+#main_nav ul {
+ margin:auto 18%;;
+}
+#main_nav li {
+   display: inline;
+   font-size: 1.4em;
+   line-height: 30px;
+   padding: 5px;
+   border-radius: 10px 10px 10px 10px;
+   
+}
+#main_nav li a{
+   display: inline;
+   width: auto;
+   line-height: 30px;
+   padding: 5px;
+}
+
+/*---------------
+  Main Content
+----------------*/
+.main_content {
+	width: 50%;
+	margin: auto;
+	padding: 10px;
+	border-radius:0px 0px 15px 15px;
+    border-left:5px solid white;
+	border-right:5px solid white;
+	border-left:5px solid white;
+	border-bottom:5px solid white;
+}
+
+/*---------------
+    Images
+----------------*/
+img {
+	border:solid #556274 3px;
+	border-radius: 10px;
+}

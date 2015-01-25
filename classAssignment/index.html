@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+	<form action="survey.php" method="post">
+		Name: <input type="text" name="name"><br>
+		E-mail: <input type="text" name="email"><br>
+		<h2>Major</h2><br>
+		<input type="radio" name="major" value="Computer Science">CS<br>
+		<input type="radio" name="major" value="Computer Science">CIT<br>
+		<input type="radio" name="major" value="Computer Science">WDD<br>
+		<input type="radio" name="major" value="Computer Science">CE<br>
+
+		<h2>Countries You Have Visited</h2><br>
+		<input type="checkbox" name="countries[]" value="North America">North America
+		<br>
+		<input type="checkbox" name="countries[]" value="South America">South America
+		<br>
+		<input type="checkbox" name="countries[]" value="Europe">Europe<br>
+		<input type="checkbox" name="countries[]" value="Asia">Asia<br>
+		<input type="checkbox" name="countries[]" value="Australia">Australia<br>
+		<input type="checkbox" name="countries[]" value="Africa">Africa<br>
+		<input type="checkbox" name="countries[]" value="Antartica">Antartica<br>
+		<textarea col="100" rows="10" name="comments" placeholder="Comments here please :)"></textarea><br>
+		<input type="submit">
+	</form>
+</body>
+</html>
