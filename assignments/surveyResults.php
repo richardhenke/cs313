@@ -1,6 +1,6 @@
 <?php 
 session_start();
-//session_destroy();
+session_destroy();
 if (!empty($_POST)) {
 	$_SESSION['redirect'] = true;
 }
@@ -135,7 +135,7 @@ $pictures = array("../pictures/ironman.jpg", "../pictures/spiderman.jpg", "../pi
 					if ($i > 0) 
 					{ 
 						echo "<div class='row_grid'>";
-						echo splitQuestion($categories[$i - 1])[$j];
+						echo splitQuestion($categories[$j])[$i - 1];
 						echo "</div>";
 					} else {
 						echo "<div class='categories row_grid'>" . $category_names[$j] . "</div>";
