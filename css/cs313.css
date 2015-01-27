@@ -7,10 +7,15 @@ body {}
           Links (general)
 ----------------------------------*/
 a {text-decoration: none;}
-a:link {color:black;}         /* unvisited link */
-a:visited {color:black;}      /* visited link */   
+a:link, a:visited {color:black;} /* visited & unvisited link */
 a:hover {color:#47E9FF;}      /* mouse over link */
 a:active {color:#47E9FF;}     /* selected link */
+/* Assignments page */
+#assignment_links li:hover  {color:#47E9FF;} 
+#assignment_links a:link, #assignment_links a:visited {color:#47E9FF;} /* visited & unvisited link */  
+#assignment_links a:hover {color:#47E9FF;}            /* mouse over link */
+#assignment_links a:active {color:#47E9FF;}           /* selected link */
+
 /*--------------------------------
             Colors
 ----------------------------------*/
@@ -105,6 +110,7 @@ margin-top:2%}
    padding: 5px;
 }
 
+
 /*---------------
   Main Content
 ----------------*/
@@ -113,7 +119,7 @@ margin-top:2%}
 	margin: auto;
 	padding: 10px;
 	border-radius:0px 0px 15px 15px;
-    border-left:5px solid white;
+  border-left:5px solid white;
 	border-right:5px solid white;
 	border-left:5px solid white;
 	border-bottom:5px solid white;
@@ -125,4 +131,12 @@ margin-top:2%}
 img {
 	border:solid #556274 3px;
 	border-radius: 10px;
+}
+
+/*---------------------------
+    Lists - Assignments Page
+----------------------------*/
+#assignment_links li {
+  list-style-type: none;
+  font-size: 2em;
 }

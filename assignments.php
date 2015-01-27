@@ -16,7 +16,11 @@
 			</ul>
 		</div>
 		<div class="main_content">
-			<h2><a href="assignments/survey.php">Survey</a></h2>
+			<div id="assignment_links">
+				<ul>
+					<li><a href="assignments/survey.php">Survey</a></li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </body>
