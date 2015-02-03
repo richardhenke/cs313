@@ -84,29 +84,40 @@ function loadDatabase()
 	}
 	return $db;
 }
-echo "<br>Loading database<br>";
-// connects to the test database
-function testConnection() {
-	$server = '$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/';
-	$username = 'cs313_admin';
-	$password = '6zDvAGqz2u4UFWww';
-	$database = 'who_borrowed_what';
-	$dsn = "mysql:host=$server;dbname=$database";
-	try {
-		$connTest = new PDO($dsn, $username, $password);
-	} catch (PDOException $exc) {
-		echo "Sorry the connection could not be established";
-	}
 
-	if (is_object($connTest)) {
-		return $connTest;
+function insert($stuff) {
+	$conn = loadDatabase();
+
+	try {
+		$sql = "INSERT INTO user (date_created, last_updated, last_updated_by, name_first, name_last, email, phone_number) VALUES (:date1, :date2, :num, :fname, :lname, :email, :phone)";
+		$stmt = $conn->prepare($sql);
+		$stmt->bindValue(':date1', "0000-00-00", PDO::PARAM_STR);
+		$stmt->bindValue(':date2', "0000-00-00", PDO::PARAM_STR);
+		$stmt->bindValue(':num', 1, PDO::PARAM_STR);
+		$stmt->bindValue(':fname', "richard", PDO::PARAM_STR);
+		$stmt->bindValue(':lname', "henke", PDO::PARAM_STR);
+		$stmt->bindValue(':email', "rich@rich.com", PDO::PARAM_STR);
+		$stmt->bindValue(':phone', "123123123123123", PDO::PARAM_STR);
+		$result = $stmt->execute();
+		$stmt->closeCursor();
+	} catch (PDOException $exc) {
+		echo "<br>PDO error insert error.<br>";
+	}
+// $result =  1 - indicates true
+// $result =  0 - indicates false
+// $result = -1 - indicates an error
+	if ($result) {
+		echo "<br>TRUE - result is:$result <br>";
+		return TRUE;
 	} else {
-		echo ' It failed';
+		echo "<br>FALSE - result is:$result <br>";
+		return FALSE;
 	}
 }
 
-//$conn = testConnection();
+echo "<br>Loading database<br>";
 $conn = loadDatabase();
 echo "<br>did it load?<br>";
+
 
 ?>
