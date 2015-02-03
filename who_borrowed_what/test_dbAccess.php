@@ -77,6 +77,7 @@ function loadDatabase()
 	}
 
 	if (is_object($connTest)) {
+		echo "<br>It worked!<br>";
 		return $connTest;
 	} else {
 		echo ' It failed';
