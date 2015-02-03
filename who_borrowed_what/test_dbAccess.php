@@ -75,7 +75,7 @@ function loadDatabase()
 echo "<br>Loading database<br>";
 // connects to the test database
 function testConnection() {
-   $server = '127.12.98.2:3306';
+   $server = '127.12.98.2';
    $username = 'cs313_admin';
    $password = '6zDvAGqz2u4UFWww';
    $database = 'who_borrowed_what';
