@@ -40,12 +40,12 @@
 function loadDatabase()
 {
 
-  $dbHost = "127.12.98.2";
-  $dbPort = "3306";
-  $dbUser = "cs313_admin";
-  $dbPassword = "Z35Zxz37mzUeMhRP";
+	$dbHost = "127.12.98.2";
+	$dbPort = "3306";
+	$dbUser = "cs313_admin";
+	$dbPassword = "Z35Zxz37mzUeMhRP";
 
-  $dbName = "who_borrowed_what";
+	$dbName = "who_borrowed_what";
 
      // $openShiftVar = getenv('OPENSHIFT_MYSQL_DB_HOST');
 
@@ -68,32 +68,44 @@ function loadDatabase()
      //echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPassword<br >\n";
   //echo "host:$dbHost:$dbPort <br>dbName:$dbName <br>user:$dbUser <br>password:$dbPassword<br />\n";
 
-  $db = new PDO("mysql:host=$dbHost:$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+	// $db = new PDO("mysql:host=$dbHost:$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 
-  return $db;
+	try {
+		$connTest = new PDO("mysql:host=$dbHost:$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+	} catch (PDOException $exc) {
+		echo "Sorry the connection could not be established";
+	}
+
+	if (is_object($connTest)) {
+		return $connTest;
+	} else {
+		echo ' It failed';
+	}
+	return $db;
 }
 echo "<br>Loading database<br>";
 // connects to the test database
 function testConnection() {
-   $server = '$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/';
-   $username = 'cs313_admin';
-   $password = '6zDvAGqz2u4UFWww';
-   $database = 'who_borrowed_what';
-   $dsn = "mysql:host=$server;dbname=$database";
-   try {
-      $connTest = new PDO($dsn, $username, $password);
-   } catch (PDOException $exc) {
-      echo "Sorry the connection could not be established";
-   }
+	$server = '$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/';
+	$username = 'cs313_admin';
+	$password = '6zDvAGqz2u4UFWww';
+	$database = 'who_borrowed_what';
+	$dsn = "mysql:host=$server;dbname=$database";
+	try {
+		$connTest = new PDO($dsn, $username, $password);
+	} catch (PDOException $exc) {
+		echo "Sorry the connection could not be established";
+	}
 
-   if (is_object($connTest)) {
-      return $connTest;
-   } else {
-      echo 'It failed';
-   }
+	if (is_object($connTest)) {
+		return $connTest;
+	} else {
+		echo ' It failed';
+	}
 }
 
-$conn = testConnection();
+//$conn = testConnection();
+$conn = loadDatabase();
 echo "<br>did it load?<br>";
 
 ?>
