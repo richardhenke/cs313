@@ -75,7 +75,7 @@ function loadDatabase()
 echo "<br>Loading database<br>";
 // connects to the test database
 function testConnection() {
-   $server = '127.12.98.2';
+   $server = '$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/';
    $username = 'cs313_admin';
    $password = '6zDvAGqz2u4UFWww';
    $database = 'who_borrowed_what';
