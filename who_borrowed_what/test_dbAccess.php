@@ -117,7 +117,9 @@ function insert($stuff) {
 
 echo "<br>Loading database<br>";
 $conn = loadDatabase();
-echo "<br>did it load?<br>";
+$test = insert("");
+
+echo "<br>did it load? Test: $test<br>";
 
 
 ?>
