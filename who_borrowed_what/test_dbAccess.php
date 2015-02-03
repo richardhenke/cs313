@@ -66,14 +66,34 @@ function loadDatabase()
      //      $dbPassword = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
      // } 
      //echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPassword<br >\n";
-  echo "host:$dbHost:$dbPort <br>dbName:$dbName <br>user:$dbUser <br>password:$dbPassword<br />\n";
+  //echo "host:$dbHost:$dbPort <br>dbName:$dbName <br>user:$dbUser <br>password:$dbPassword<br />\n";
 
   $db = new PDO("mysql:host=$dbHost:$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 
   return $db;
 }
 echo "<br>Loading database<br>";
-loadDatabase();
+// connects to the test database
+function testConnection() {
+   $server = '127.12.98.2:3306';
+   $username = 'cs313_admin';
+   $password = '6zDvAGqz2u4UFWww';
+   $database = 'who_borrowed_what';
+   $dsn = "mysql:host=$server;dbname=$database";
+   try {
+      $connTest = new PDO($dsn, $username, $password);
+   } catch (PDOException $exc) {
+      echo "Sorry the connection could not be established";
+   }
+
+   if (is_object($connTest)) {
+      return $connTest;
+   } else {
+      echo 'It failed';
+   }
+}
+
+$conn = testConnection();
 echo "<br>did it load?<br>";
 
 ?>
