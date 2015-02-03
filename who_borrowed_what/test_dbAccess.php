@@ -140,10 +140,11 @@ function getUser($id) {
 
 echo "<br>Loading database<br>";
 $conn = loadDatabase();
-$test = insert("");
+//$test = insert("");
 $user1 = getUser("1");
 
-print_r($user1);
+var_dump($user1);
+//print_r($user1);
 
 echo "<br>did it load? Test: $test<br>";
 
