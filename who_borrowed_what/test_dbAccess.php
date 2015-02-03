@@ -94,9 +94,9 @@ function insert($stuff) {
 		$stmt->bindValue(':date1', "0000-00-00", PDO::PARAM_STR);
 		$stmt->bindValue(':date2', "0000-00-00", PDO::PARAM_STR);
 		$stmt->bindValue(':num', 1, PDO::PARAM_STR);
-		$stmt->bindValue(':fname', "richard", PDO::PARAM_STR);
-		$stmt->bindValue(':lname', "henke", PDO::PARAM_STR);
-		$stmt->bindValue(':email', "rich@rich.com", PDO::PARAM_STR);
+		$stmt->bindValue(':fname', "Becky", PDO::PARAM_STR);
+		$stmt->bindValue(':lname', "Ann", PDO::PARAM_STR);
+		$stmt->bindValue(':email', "Beck@beck.com", PDO::PARAM_STR);
 		$stmt->bindValue(':phone', "123123123123123", PDO::PARAM_STR);
 		$result = $stmt->execute();
 		$stmt->closeCursor();
@@ -115,9 +115,35 @@ function insert($stuff) {
 	}
 }
 
+// This will retrieve a category item from the database
+function getUser($id) {
+   $conn = loadDatabase();
+
+   try {
+      $sql = "SELECT * FROM user 
+              WHERE user_id = :id";
+      $stmt = $conn->prepare($sql);
+      $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+      $stmt->execute();
+      $data = $stmt->fetchAll();
+      $stmt->closeCursor();
+   } catch (PDOException $ex) {
+      echo = "PDO error in model.";
+   }
+   
+   if (is_array($data)) {
+      return $data;
+   } else {
+      return FALSE;
+   }
+}
+
 echo "<br>Loading database<br>";
 $conn = loadDatabase();
 $test = insert("");
+$user1 = getUser("1");
+
+print_r($user1);
 
 echo "<br>did it load? Test: $test<br>";
 
