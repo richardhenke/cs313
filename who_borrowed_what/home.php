@@ -21,14 +21,14 @@ if (!isset($_SESSION['loggedin'])) {
    </header>
 
    <main>
-      <div class='side_nav'> 
+      <!-- <div class='side_nav'> 
          <ul>
             <li>New Transation</li>
             <li>Borrowed History</li>
             <li>Lent History</li>
          </ul>
       </div>
-
+ -->
       <div class='main_content'>
          <h1>Main Content</h1>
          <div class='borrowed_view'>
@@ -42,7 +42,7 @@ if (!isset($_SESSION['loggedin'])) {
          foreach ($borrowedTransactions as $key => $value) {
             echo "<div class='transaction'><div class='trans_left'>";
             echo "<img class='trans_item_picture' src='" . $value['item_picture'] . "' /><span class='trans_item_name'>". $value['name'] . "</span></div>";
-            echo "<div class-'arrow'><div class=''></div><div class='arrow-right'></div></div>";
+            #echo "<div class-'arrow'><div class=''></div><div class='arrow-right'></div></div>";
             echo "<div class='trans_right'> <img class='trans_user_picture' src='" . $value['profile_picture'] . "' /><span class='trans_user_name'>" . $value['name_first'] . " " . $value['name_last'] . "</span></div>";
             echo "</div>";
          }

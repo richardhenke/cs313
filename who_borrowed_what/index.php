@@ -6,7 +6,6 @@
 if (!isset($_SESSION)) {
 	session_start();
 }
-//session_destroy();
 // Get access to the model
 include 'model.php';
 // Get access to the custom functions library

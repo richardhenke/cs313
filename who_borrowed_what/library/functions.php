@@ -4,7 +4,7 @@ function connectDb()
 	// LOCAL ONLY
 	//$dbHost = "localhost";
 	//$dbUser = "cs313_admin";
-
+	// For web
 	$dbHost = "127.12.98.2";
 	$dbUser = "cs313_admin";
 	$dbPassword = "Z35Zxz37mzUeMhRP";
@@ -88,6 +88,7 @@ function validateMatchingPassword($password, $confirmPassword) {
 function personalizedWelcom() {
 	echo "<span class='personal_profile_pic'><img src='" . $_SESSION['profile_picture'] . "'/></span>";
 	echo "<span class='personal_name'>$_SESSION[name_first]</span>";
+	echo "<span class='logout'><a href='logout.php'>Logout</a></span>";
 	
 }
 
