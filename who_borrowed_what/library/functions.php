@@ -1,8 +1,12 @@
 <?php
 function connectDb()
 {
-	$dbHost = "localhost";
-	$dbUser = "cs313_admin";
+	// LOCAL ONLY
+	//$dbHost = "localhost";
+	//$dbUser = "cs313_admin";
+
+	$dbHost = "127.12.98.2";
+	$dbUser = "adminHLIkN1p";
 	$dbPassword = "Z35Zxz37mzUeMhRP";
 	$dbName = "who_borrowed_what";
 	$connTest = "";
