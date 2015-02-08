@@ -6,7 +6,7 @@ function connectDb()
 	//$dbUser = "cs313_admin";
 
 	$dbHost = "127.12.98.2";
-	$dbUser = "adminHLIkN1p";
+	$dbUser = "cs313_admin";
 	$dbPassword = "Z35Zxz37mzUeMhRP";
 	$dbName = "who_borrowed_what";
 	$connTest = "";
