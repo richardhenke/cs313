@@ -14,12 +14,6 @@ if (!isset($_SESSION['loggedin'])) {
    <link rel="stylesheet" type="text/css" href="css/who_bowwored_what.css" media="screen" >
 </head>
 <body>
-   <?php
-   $display = FALSE;
-   if ($display) {
-      echo " <div class='filter'></div> <div class='popout'></div>"; 
-   }
-   ?>
 
 </div>
 
@@ -39,6 +33,7 @@ if (!isset($_SESSION['loggedin'])) {
 
    <div class='main_content'>
       <?php
+      echo $_SERVER['DOCUMENT_ROOT'];
       if (!empty($_GET) && $_GET['name'] == "nt") {
          include $_SERVER['DOCUMENT_ROOT'] . "/cs313/who_borrowed_what/modules/newTransaction.php";
       } else if (!empty($_POST['upload'])) {

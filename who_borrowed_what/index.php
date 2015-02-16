@@ -6,6 +6,8 @@
 if (!isset($_SESSION)) {
 	session_start();
 }
+
+// This variable will be used 
 $message = "";
 // Get access to the model
 include 'model.php';
@@ -20,9 +22,6 @@ if (!isset($_SESSION['loggedin'])) {
 	
 	// Check if user submitted login info
 	if (!empty($_POST['email'])) {
-		//include 'home.php';
-		//$_SESSION['loggedin'] = "TRUE";
-
 		$userInfo = login($_POST['email'], $_POST['password']);
 		if (is_array($userInfo)) {
 			foreach ($userInfo as $key => $value) {

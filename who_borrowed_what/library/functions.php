@@ -25,27 +25,6 @@ function connectDb()
 	return $connTest;
 }
 
-
-function getTransactionsBorrowed() {
-	// 1) Query transactions
-    // Change this to use session variable for user id
-	$user = 1;
-	$borrowedTrans = queryBorrowedTransactions($user);
-	echo "<br />Results for transactions:  <br />". var_dump($borrowedTrans) ."<br />";
-	//    a) Based on query results query owner info
-	//    b) Based on query results query borrowers info
-
-	// 2) Query items that were borrowed
-	//    a) Get item NAME, PHOTO
-
-	// Return an array of arrays in this form
-	// Array {
-	//   [Trans#0][Item_name][Item_photo][borrower_name_f][borrower_name_l][borrower_photo][trans_create_date][return_date]
-    //   [Trans#1][Item_name][Item_photo][borrower_name_f][borrower_name_l][borrower_photo][trans_create_date][return_date]
-    //   .
-    //   .
-} 
-
 function login($email, $password) {
 	$sanEmail = validateEmail($email);
 	if(doesUserExist($sanEmail)) {
