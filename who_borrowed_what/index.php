@@ -6,10 +6,12 @@
 if (!isset($_SESSION)) {
 	session_start();
 }
+$message = "";
 // Get access to the model
 include 'model.php';
 // Get access to the custom functions library
 include 'library/functions.php';
+
 
 // Bring in the View of the MVC pattern
 // Check to see if user has already logged in

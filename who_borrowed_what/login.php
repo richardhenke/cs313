@@ -7,8 +7,8 @@
    <link rel="stylesheet" type="text/css" href="css/who_bowwored_what.css" media="screen" >
 </head>
 <body>
-  <div class="login_filter"></div>
-  <div class='login_popout'>
+  <div class="filter"></div>
+  <div class='popout'>
      <form action="index.php" method='POST'>
      
       <label >Email:</label>
