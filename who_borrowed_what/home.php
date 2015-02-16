@@ -33,9 +33,8 @@ if (!isset($_SESSION['loggedin'])) {
 
    <div class='main_content'>
       <?php
-      echo $_SERVER['DOCUMENT_ROOT'];
       if (!empty($_GET) && $_GET['name'] == "nt") {
-         include $_SERVER['DOCUMENT_ROOT'] . "/cs313/who_borrowed_what/modules/newTransaction.php";
+         include "modules/newTransaction.php";
       } else if (!empty($_POST['upload'])) {
          if (!empty($_FILES['fileToUpload']['name'])) {
             echo "You want to upload a file";
@@ -48,7 +47,7 @@ if (!isset($_SESSION['loggedin'])) {
          }
          
       } else {
-         include $_SERVER['DOCUMENT_ROOT'] . "/cs313/who_borrowed_what/modules/transactionsView.php";
+         include "modules/transactionsView.php";
       }
       ?>
    </div>
