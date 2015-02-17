@@ -39,9 +39,9 @@ if (!isset($_SESSION['loggedin'])) {
 		include 'register.php';
 	// Check if Registeration Form has been submited
 	} else if (isset($_POST['submited']) && $_POST['submited'] == 'Register') {
-		echo "<br> Registration has been Submited<br>";
 		// Add new user to database
-		registerUser();
+		echo registerUser();
+		include 'login.php';
 
 	// If none of the above then user gets login page
 	} else {
