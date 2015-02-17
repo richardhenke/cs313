@@ -182,19 +182,15 @@ $stmt->bindValue(':borrower_id', $_POST['lendTo'], PDO::PARAM_STR);
 $result = $stmt->execute();
 $stmt->closeCursor();
 if ($result) {
-	echo "<br>Look at: #1";
 	$gateCheck = TRUE;
 } else {
-	echo "<br>Look at: #2";
 	$gateCheck = FALSE;
 }
 
 } else {
-	echo "<br>Look at: #3";
 	$stmt->closeCursor();
 	$gateCheck = FALSE;
 }
-echo "<br>Look at: #4";
 return $gateCheck;
 }
 
@@ -259,7 +255,6 @@ $stmt->bindValue(':last_updated', date("Y-m-d"), PDO::PARAM_STR);
 $stmt->bindValue(':profile_description', $description = 'No description has been entered for ' . $_POST['name_first'] . ' yet.', PDO::PARAM_STR);
 $result = $stmt->execute();
 $stmt->closeCursor();
-
 
      // If we arrive here, it means that no exception was thrown
      // i.e. no query has failed, and we can commit the transaction

@@ -37,11 +37,11 @@ if (!isset($_SESSION['loggedin'])) {
          include "modules/newTransaction.php";
       } else if (!empty($_POST['upload'])) {
          if (!empty($_FILES['fileToUpload']['name'])) {
-            echo "You want to upload a file";
             imageUpload(isset($_POST));
             $item_picture = "pictures/items/" . basename($_FILES["fileToUpload"]["name"]);
             /// Place the model INSERT function here and pass item_picture in 
             createTransaction($item_picture);
+            include "modules/transactionsView.php";
          } else {
             echo "You didn't select a file to upload.";
          }

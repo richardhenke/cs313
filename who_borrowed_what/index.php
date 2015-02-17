@@ -41,7 +41,7 @@ if (!isset($_SESSION['loggedin'])) {
 	} else if (isset($_POST['submited']) && $_POST['submited'] == 'Register') {
 		// Add new user to database
 		echo registerUser();
-		include 'login.php';
+		include 'home.php';
 
 	// If none of the above then user gets login page
 	} else {
