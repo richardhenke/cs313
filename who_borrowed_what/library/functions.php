@@ -56,12 +56,25 @@ function validateEmail($email) {
 
 // Validate password
 function validateMatchingPassword($password, $confirmPassword) {
-	if (0 !== stcp($password, $confirmPassword)) {
-		return false;
-	} else {
+	if ($password == $confirmPassword) {
 		return true;
+	} else {
+		return false;
 	}
+}
 
+// Hash a password
+function hashPassword($password) {
+   return crypt($password, '$5$rounds=5000$yabad507abadoori$');
+}
+
+// Validates dates
+function validateDate($date) {
+   if (0 === preg_match("/^(\d\d\d\d)-(\d\d)-(\d\d)$/", $date)) {
+      return true;
+   } else {
+      return false;
+   }
 }
 
 function personalizedWelcome() {
@@ -114,6 +127,22 @@ if ($uploadOk == 0) {
 	}
 }
 return $message;
+}
+
+function registerUser() {
+	$password = $_POST['password'];
+	$confirmPassword = $_POST['password_confirm'];
+	if (validateMatchingPassword($password, $confirmPassword)) {
+		$result = addUser($password);
+		if ($result) {
+			$message = "You are now Registered!";
+		} else {
+			$message = "Registration faild.";
+		}		
+	} else {
+		$message = "Passwords do not match.";
+	}
+	return $message;
 }
 
 ?>

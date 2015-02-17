@@ -14,14 +14,13 @@ include 'model.php';
 // Get access to the custom functions library
 include 'library/functions.php';
 
-
 // Bring in the View of the MVC pattern
 // Check to see if user has already logged in
 if (!isset($_SESSION['loggedin'])) {
 	// If they haven't logged in then pullup login screen
 	
 	// Check if user submitted login info
-	if (!empty($_POST['email'])) {
+	if (isset($_POST['submited']) && $_POST['submited'] == 'Login') {
 		$userInfo = login($_POST['email'], $_POST['password']);
 		if (is_array($userInfo)) {
 			foreach ($userInfo as $key => $value) {
@@ -35,9 +34,20 @@ if (!isset($_SESSION['loggedin'])) {
 			}
 			include 'home.php';
 		}
+	// Check if user wants to register
+	} else if (isset($_GET['name']) && $_GET['name'] == 'r') {
+		include 'register.php';
+	// Check if Registeration Form has been submited
+	} else if (isset($_POST['submited']) && $_POST['submited'] == 'Register') {
+		echo "<br> Registration has been Submited<br>";
+		// Add new user to database
+		registerUser();
+
+	// If none of the above then user gets login page
 	} else {
 		include 'login.php';
 	}
+// If not the above then user is already logged in so show home page
 } else {
 	include 'home.php';
 }
