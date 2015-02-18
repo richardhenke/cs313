@@ -9,6 +9,7 @@ function connectDb()
      		// LOCAL ONLY
 		$dbHost = "localhost";
 		$dbUser = "cs313_admin";
+
 	} else {
     // For web
 		$dbHost = "127.12.98.2";
@@ -92,11 +93,8 @@ function personalizedWelcome() {
 }
 
 function imageUpload() {
-
 	echo "<br>This is where my file is saving: ".sys_get_temp_dir()."<br>";
-	echo "<br>OPENSHIFT DIR: ".$OPENSHIFT_DATA_DIR."<br>";
-	//$target_dir = "pictures/items/";
-	$target_dir = $OPENSHIFT_DATA_DIR . "/pictures/item/";
+	$target_dir = "pictures/items/";
 	$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 	$uploadOk = 1;
 	$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -131,20 +129,12 @@ function imageUpload() {
 if ($uploadOk == 0) {
 	$message = "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
-// } else {
-// 	if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-// 		$message = "The file " . basename( $_FILES["fileToUpload"]["name"]) . " has been uploaded.";
-// 	} else {
-// 		$message = "Sorry, there was an error uploading your file.";
-// 	}
-// }
 } else {
-	if (move_uploaded_file($_FILES["file"]["tmp_name"],
-		$_ENV["OPENSHIFT_DATA_DIR"] . "pictures/items/". $_FILES["file"]["name"])) {
+	if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 		$message = "The file " . basename( $_FILES["fileToUpload"]["name"]) . " has been uploaded.";
-} else {
-	$message = "Sorry, there was an error uploading your file.";
-}
+	} else {
+		$message = "Sorry, there was an error uploading your file.";
+	}
 }
 return $message;
 }
