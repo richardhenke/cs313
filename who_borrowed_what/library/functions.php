@@ -92,8 +92,7 @@ function personalizedWelcome() {
 }
 
 function imageUpload() {
-	$folder_name="uploads";
-	mkdir("$OPENSHIFT_DATA_DIR/$folder_name");
+
 	echo "<br>This is where my file is saving: ".sys_get_temp_dir()."<br>";
 	echo "<br>OPENSHIFT DIR: ".$OPENSHIFT_DATA_DIR."<br>";
 	//$target_dir = "pictures/items/";
