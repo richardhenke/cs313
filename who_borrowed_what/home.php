@@ -36,28 +36,28 @@ if (!isset($_SESSION['loggedin'])) {
       if (!empty($_GET) && $_GET['name'] == "nt") {
          include "modules/newTransaction.php";
       } else if (!empty($_POST['upload'])) {
-         if (!empty($_FILES['fileToUpload']['name'])) {
-            $name=$_FILES["file"]["name"];
+         // if (!empty($_FILES['fileToUpload']['name'])) {
+         //    $name=$_FILES["file"]["name"];
 
-            if ($_FILES["file"]["error"] > 0) {
-              echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
-           }
-           else {
-              echo "Upload: " . $_FILES["file"]["name"] . "<br>";
-              echo "Type: " . $_FILES["file"]["type"] . "<br>";
-              echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
-              echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br>";
+         //    if ($_FILES["file"]["error"] > 0) {
+         //      echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
+         //   }
+         //   else {
+         //      echo "Upload: " . $_FILES["file"]["name"] . "<br>";
+         //      echo "Type: " . $_FILES["file"]["type"] . "<br>";
+         //      echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
+         //      echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br>";
 
-              if (file_exists($_ENV["OPENSHIFT_DATA_DIR"] . "pictures/items/". $_FILES["file"]["name"])) {
-               echo $_FILES['file']['name'] . " already exists. ";
-               echo unlink($_ENV['OPENSHIFT_DATA_DIR'] . "pictures/items/". $_FILES['file']['name']);
-            }
+         //      if (file_exists($_ENV["OPENSHIFT_DATA_DIR"] . "pictures/items/". $_FILES["file"]["name"])) {
+         //       echo $_FILES['file']['name'] . " already exists. ";
+         //       echo unlink($_ENV['OPENSHIFT_DATA_DIR'] . "pictures/items/". $_FILES['file']['name']);
+         //    }
 
-            move_uploaded_file($_FILES["file"]["tmp_name"], $_ENV['OPENSHIFT_DATA_DIR'] . "pictures/items/". $_FILES["file"]["name"]);
-            echo "Stored in: " . $_ENV['OPENSHIFT_DATA_DIR'] . "pictures/items/" . $_FILES['file']['name'];
+         //    move_uploaded_file($_FILES["file"]["tmp_name"], $_ENV['OPENSHIFT_DATA_DIR'] . "pictures/items/". $_FILES["file"]["name"]);
+         //    echo "Stored in: " . $_ENV['OPENSHIFT_DATA_DIR'] . "pictures/items/" . $_FILES['file']['name'];
 
 
-            echo "<img src='" . $_ENV["OPENSHIFT_DATA_DIR"] . "pictures/items/". $_FILES["file"]["name"] . "' />";
+         //    echo "<img src='" . $_ENV["OPENSHIFT_DATA_DIR"] . "pictures/items/". $_FILES["file"]["name"] . "' />";
 
          //createTransaction($item_picture);
             include "modules/transactionsView.php";
