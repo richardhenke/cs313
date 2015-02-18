@@ -37,9 +37,10 @@ if (!isset($_SESSION['loggedin'])) {
          include "modules/newTransaction.php";
       } else if (!empty($_POST['upload'])) {
          if (!empty($_FILES['fileToUpload']['name'])) {
-            imageUpload(isset($_POST));
+            $message = imageUpload(isset($_POST));
+            echo "<p>$message</p>";
             $item_picture = "pictures/items/" . basename($_FILES["fileToUpload"]["name"]);
-            /// Place the model INSERT function here and pass item_picture in 
+            // Place the model INSERT function here and pass item_picture in 
             createTransaction($item_picture);
             include "modules/transactionsView.php";
          } else {

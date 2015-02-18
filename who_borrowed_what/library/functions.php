@@ -2,11 +2,11 @@
 function connectDb()
 {
 	// LOCAL ONLY
-	//$dbHost = "localhost";
-	//$dbUser = "cs313_admin";
-	// For web
-	$dbHost = "127.12.98.2";
+	$dbHost = "localhost";
 	$dbUser = "cs313_admin";
+	// For web
+	//$dbHost = "127.12.98.2";
+	//$dbUser = "cs313_admin";
 	$dbPassword = "Z35Zxz37mzUeMhRP";
 	$dbName = "who_borrowed_what";
 	$connTest = "";
@@ -84,7 +84,10 @@ function personalizedWelcome() {
 }
 
 function imageUpload() {
-	$target_dir = "pictures/items/";
+	echo "<br>This is where my file is saving: ".sys_get_temp_dir()."<br>";
+	echo "<br>OPENSHIFT DIR: ".$OPENSHIFT_DATA_DIR."<br>";
+	//$target_dir = "pictures/items/";
+	$target_dir = $OPENSHIFT_DATA_DIR;
 	$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 	$uploadOk = 1;
 	$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);

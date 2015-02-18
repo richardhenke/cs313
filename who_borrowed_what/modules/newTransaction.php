@@ -1,11 +1,14 @@
 
 <form action="." method="POST" class='newTransaction' enctype="multipart/form-data">
-  <label for='lendTo'>Lend to:</label>
-  <?php 
-  $users = getUsers();
-  echo "<select name='lendTo'>";
-  foreach ($users as $key => $user) {
-   echo "<option name='user_id' value='$user[user_id]'>$user[name_first] $user[name_last]</option>";
+ <label for='lendTo'>Lend to:</label>
+ <?php 
+ $users = getUsers();
+ echo "<select name='lendTo'>";
+ foreach ($users as $key => $user) {
+   // Don't display users own name as an option.
+   if ($user['user_id'] != $_SESSION['user_id']) {
+      echo "<option name='user_id' value='$user[user_id]'>$user[name_first] $user[name_last]</option>";
+   }
 }
 echo "</select>";
 ?>

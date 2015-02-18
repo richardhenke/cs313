@@ -202,7 +202,6 @@ function addUser($password) {
 	$gateCheck = "";
 
 	try {
-
 		$conn->beginTransaction();
 		echo "<br>We are beginning the transaction...<br>";
 
@@ -218,6 +217,9 @@ function addUser($password) {
 		$stmt->bindValue(':phone_number', $_POST['phone_number'], PDO::PARAM_STR);
 		$result = $stmt->execute();
 		$new_id = $conn->lastInsertId();
+		if (!$result) {
+			throw new Exception($conn->error);
+		}
 
 	// $result =  1 - indicates true
 	// $result =  0 - indicates false
@@ -255,6 +257,9 @@ $stmt->bindValue(':last_updated', date("Y-m-d"), PDO::PARAM_STR);
 $stmt->bindValue(':profile_description', $description = 'No description has been entered for ' . $_POST['name_first'] . ' yet.', PDO::PARAM_STR);
 $result = $stmt->execute();
 $stmt->closeCursor();
+if (!$result) {
+	throw new Exception($conn->error);
+}
 
      // If we arrive here, it means that no exception was thrown
      // i.e. no query has failed, and we can commit the transaction
