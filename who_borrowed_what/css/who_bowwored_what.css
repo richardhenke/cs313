@@ -25,7 +25,7 @@ main {
 
 /*----- Side Nav ------*/
 .side_nav {
-	background-color:yellow;
+	background-color:#2D7A97;
 	float:left;
 	text-align:left;
 
@@ -50,7 +50,7 @@ main {
 }
 /*--- Footer -----*/
 footer {
-	background-color:green;
+	background-color:#252525;
 	padding:1px;
 }
 
