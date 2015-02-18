@@ -1,6 +1,5 @@
 
-<form action="home.php" method="POST" class='newTransaction' enctype="multipart/form-data">
- <?php displayMessage($message); ?>
+<form action="." method="POST" class='newTransaction' enctype="multipart/form-data">
  <label for='lendTo'>Lend to:</label>
  <?php 
  $users = getUsers();

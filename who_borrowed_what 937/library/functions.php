@@ -1,6 +1,7 @@
 <?php
 function connectDb()
 {
+
 	$openShiftVar = getenv('OPENSHIFT_MYSQL_DB_HOST');
 
 	if ($openShiftVar === null || $openShiftVar == "")
@@ -93,15 +94,9 @@ function personalizedWelcome() {
 
 // This one works! 2/18/15 at 1:30am
 function imageUpload() {
-	$message = "";
+	echo "<br>This is where my file is saving: ".sys_get_temp_dir()."<br>";
 	$target_dir = "pictures/items/";
-	$itemNumber = getItemNumber();
-	$num = $itemNumber[0][0];
-	$num++;
-	$ext = pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION);
-	$newFilename = "item" . $num . "." . $ext;
-	$target_file = $target_dir . $newFilename;	
-	$_SESSION['item_picture'] = $target_file;
+	$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 	$uploadOk = 1;
 	$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 // Check if image file is a actual image or fake image
@@ -126,22 +121,23 @@ function imageUpload() {
 		$uploadOk = 0;
 	}
 // Allow certain file formats
-	if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+	if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+		&& $imageFileType != "gif" ) {
 		$message = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-		$uploadOk = 0;
-	}
+	$uploadOk = 0;
+}
 // Check if $uploadOk is set to 0 by an error
-	if ($uploadOk == 0) {
-		$message = "Sorry, your file was not uploaded.";
+if ($uploadOk == 0) {
+	$message = "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
+} else {
+	if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+		$message = "The file " . basename( $_FILES["fileToUpload"]["name"]) . " has been uploaded.";
 	} else {
-		if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-			$message = "The file " . $newFilename . " has been uploaded.";
-		} else {
-			$message = "Sorry, there was an error uploading your file.";
-		}
+		$message = "Sorry, there was an error uploading your file.";
 	}
-	return $message;
+}
+return $message;
 }
 
 function registerUser() {
@@ -160,7 +156,4 @@ function registerUser() {
 	return $message;
 }
 
-function displayMessage($message) {
-	echo "<p class='message'> $message </p>";
-}
 ?>

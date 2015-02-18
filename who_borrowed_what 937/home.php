@@ -1,20 +1,9 @@
 <?php 
-// Get access to the session
-if (!isset($_SESSION)) {
-  session_start();
-  // If they haven't logged in then pull up login screen
-  if (!isset($_SESSION['loggedin'])) {
-     header("Location: login.php");
-     die();
-  }
+// Bring in the View of the MVC pattern
+if (!isset($_SESSION['loggedin'])) {
+//header( 'Location: http://www.yoursite.com/new_page.html' ) 
+   header('Location: index.php');
 }
-// This variable will be used to display information about submissions or data changes
-$message = "";
-// Get access to the model
-include 'model.php';
-// Get access to the custom functions library
-include 'library/functions.php';
-
 ?>
 <!DOCTYPE html>
 <!-- This is the View in the MVC pattern -->
@@ -49,13 +38,15 @@ include 'library/functions.php';
       } else if (!empty($_POST['upload'])) {
          if (!empty($_FILES['fileToUpload']['name'])) {
             $message = imageUpload(isset($_POST));
-            //$item_picture = "pictures/items/" . basename($_FILES["fileToUpload"]["name"]);
+            echo "<p>$message</p>";
+            $item_picture = "pictures/items/" . basename($_FILES["fileToUpload"]["name"]);
             // Place the model INSERT function here and pass item_picture in 
-            createTransaction($_SESSION['item_picture']);
+            createTransaction($item_picture);
             include "modules/transactionsView.php";
          } else {
-            $message = "You didn't select a file to upload.";
+            echo "You didn't select a file to upload.";
          }
+         
       } else {
          include "modules/transactionsView.php";
       }

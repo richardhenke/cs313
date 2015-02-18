@@ -1,0 +1,150 @@
+/*----- Body -----*/
+body {
+	margin:auto;
+}
+/*----- Header -----*/
+header {
+	background-color:#252525;
+}
+#logo {
+	background-color: teal;
+	display: inline-block;
+}
+#personalized_welcome {
+	background-color: maroon;
+	display: inline-block;
+	float:right;
+}
+/*------ Main -------*/
+main {
+	background-color:#373737;
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
+
+/*----- Side Nav ------*/
+.side_nav {
+	background-color:#2D7A97;
+	float:left;
+	text-align:left;
+
+}
+.side_nav ul {
+	list-style-type: none;
+	padding:0px;
+}
+.side_nav ul li{ 
+	padding:1% 15%;
+}
+/*----- Main Content ----*/
+.main_content {
+	background-color:purple;
+	display:inline-block;
+	width:65%;
+
+	margin-top:4em;
+	margin-bottom:4em;
+	
+
+}
+/*--- Footer -----*/
+footer {
+	background-color:#252525;
+	padding:1px;
+}
+
+img {
+	width: 100%;
+	display:inline-block;
+}
+
+.trans_left {
+	background-color:green;
+	display:inline-block;
+	width:25%;
+}
+.trans_item_name {
+	display:block;
+}
+.trans_user_name {
+	display:block;
+}
+.trans_right {
+	background-color:red;
+	display:inline-block;
+	width:25%;
+}
+
+.filter {
+background-image: url("../pictures/backgrounds/bg.png");
+        width:100%;
+        height:100%;
+        position:fixed;
+    	z-index:1;
+
+}
+
+.popout {
+	
+    position:fixed;
+    left: 50%;
+    top: 50%;
+    background-color: white;
+    z-index: 100;
+    margin-top: -20px;
+    margin-left:-15%;
+	background-image: url("../pictures/backgrounds/bg.png");
+	
+}
+
+.personal_profile_pic img {
+	width:50px;
+	height: 50px;
+}
+
+.personal_name {
+	display:block;
+}
+
+.arrow-right {
+	width: 0; 
+	height: 0; 
+	border-top: 30px solid transparent;
+	border-bottom: 30px solid transparent;
+	border-left: 50px solid white;
+	display:inline-block;
+}
+.to_or_from {
+	color:white;
+	font-size:2em;
+	line-height:100%;
+	display:inline-block;
+	width:20%;
+	min-width:90px;
+	
+}
+
+.main_content h1 {
+	background-color:white;
+	margin:0px;
+}
+.newTransaction {
+	display:inline-block;
+	background-color:white;
+	margin:auto;
+}
+.newTransaction label, input, textarea, select {
+	display:block;
+	text-align:left;
+}
+
+
+
+/*---
+
+verticle-align:middle;
+verticle-align:top;
+verticle-align:bottom;
+
+--*/

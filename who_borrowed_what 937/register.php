@@ -1,34 +1,3 @@
-<?php 
-// Get access to the session
-if (!isset($_SESSION)) {
-	session_start();
-}
-// This variable will be used to display information about submissions or data changes
-$message = "";
-// Get access to the model
-include 'model.php';
-// Get access to the custom functions library
-include 'library/functions.php';
-
-// Bring in the View of the MVC pattern
-// Check to see if user has already logged in
-if (isset($_SESSION['loggedin'])) {
-    // User is already logged in so send to home page
-	header("Location: home.php");
-	die();
-} else if (isset($_POST['submited']) && $_POST['submited'] == 'Register') {
-    // Add new user to database
-	$message = registerUser();
-	echo "<br>Status: " . $message . "<br>";
-	// Got to login page to sign in
-	header("Location: login.php");
-	die();
-// If none of the above then just display the register form.
-} else if (isset($_GET['name']) && $_GET['name'] == 'l') {
-// Got to login page to sign in
-	header("Location: login.php");
-	die();
-} else { ?>
 <!DOCTYPE html>
 <!-- This is the View in the MVC pattern -->
 <html lang="en">
@@ -62,10 +31,6 @@ if (isset($_SESSION['loggedin'])) {
 
 			<input required type="submit" value="Register" name="submited">
 		</form>
-		<a href='?name=l'>Back to Login Screen</a>
 	</div>
 </body>
 </html>
-<?php
-}
-?>

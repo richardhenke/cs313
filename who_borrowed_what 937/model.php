@@ -37,8 +37,7 @@ function getLentTransactions($user_id) {
 		ON u.user_id = t.borrower_id 
 		AND t.active = 'YES'
 		AND a.user_id = t.borrower_id
-		AND i.item_id = t.item_id
-		ORDER BY t.transaction_id DESC";
+		AND i.item_id = t.item_id";
 		$stmt = $conn->prepare($sql);
 		$stmt->execute();
 		$data = $stmt->fetchAll();
@@ -66,8 +65,7 @@ function getBorrowedTransactions($user_id) {
 		ON u.user_id = t.owner_id 
 		AND t.active = 'YES'
 		AND a.user_id = t.owner_id
-		AND i.item_id = t.item_id
-		ORDER BY t.transaction_id DESC";
+		AND i.item_id = t.item_id;";
 		$stmt = $conn->prepare($sql);
 		$stmt->execute();
 		$data = $stmt->fetchAll();
@@ -274,29 +272,5 @@ $conn->commit();
 }
 }
 
-function getItemNumber() {
-   $conn = connectDb(); // The server connection
 
-   // Hash password so it matches
-   //$passwordHashed = hashPassword($password);
-   try {
-// Select the user ID that matches the email and password
-   	$sql = "SELECT MAX(item_id) FROM item";
-   	$stmt = $conn->prepare($sql);
-   	$stmt->execute();
-   	$loginInfo = $stmt->fetchAll();
-   	$stmt->closeCursor();
-   } catch (PDOException $e) {
-      return 0; // indicates failure
-  }
-
-   // Find out if you got results
-  if (is_array($loginInfo)) {
-  	return $loginInfo;
-  } else {
-  	return FALSE;
-  }
-
-// End of function
-}
 ?>
