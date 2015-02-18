@@ -36,7 +36,36 @@ if (!isset($_SESSION['loggedin'])) {
       if (!empty($_GET) && $_GET['name'] == "nt") {
          include "modules/newTransaction.php";
       } else if (!empty($_POST['upload'])) {
-         // if (!empty($_FILES['fileToUpload']['name'])) {
+         if (!empty($_FILES['fileToUpload']['name'])) {
+            $message = imageUpload(isset($_POST));
+            echo "<p>$message</p>";
+            $item_picture = "pictures/items/" . basename($_FILES["fileToUpload"]["name"]);
+            // Place the model INSERT function here and pass item_picture in 
+            createTransaction($item_picture);
+            include "modules/transactionsView.php";
+         } else {
+            echo "You didn't select a file to upload.";
+         }
+         
+      } else {
+         include "modules/transactionsView.php";
+      }
+      ?>
+   </div>
+
+</div>
+</main>
+
+<footer>
+   <p>Footer</p>
+   <p><?php echo 'Last Updated: ' . date('j F, Y', getlastmod()); ?></p>
+</footer>
+
+</body>
+</html>
+
+<?php
+    // if (!empty($_FILES['fileToUpload']['name'])) {
          //    $name=$_FILES["file"]["name"];
 
          //    if ($_FILES["file"]["error"] > 0) {
@@ -58,26 +87,4 @@ if (!isset($_SESSION['loggedin'])) {
 
 
          //    echo "<img src='" . $_ENV["OPENSHIFT_DATA_DIR"] . "pictures/items/". $_FILES["file"]["name"] . "' />";
-
-         //createTransaction($item_picture);
-            include "modules/transactionsView.php";
-         } else {
-            echo "You didn't select a file to upload.";
-         }
-
-      } else {
-         include "modules/transactionsView.php";
-      }
-      ?>
-   </div>
-
-</div>
-</main>
-
-<footer>
-   <p>Footer</p>
-   <p><?php echo 'Last Updated: ' . date('j F, Y', getlastmod()); ?></p>
-</footer>
-
-</body>
-</html>
+?>
