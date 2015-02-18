@@ -92,6 +92,7 @@ function personalizedWelcome() {
 	echo "<span class='logout'><a href='logout.php'>Logout</a></span>";
 }
 
+// This one works! 2/18/15 at 1:30am
 function imageUpload() {
 	echo "<br>This is where my file is saving: ".sys_get_temp_dir()."<br>";
 	$target_dir = "pictures/items/";
