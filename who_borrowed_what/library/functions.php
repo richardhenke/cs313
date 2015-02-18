@@ -1,12 +1,20 @@
 <?php
 function connectDb()
 {
-	// LOCAL ONLY
-	$dbHost = "localhost";
-	$dbUser = "cs313_admin";
-	// For web
-	//$dbHost = "127.12.98.2";
-	//$dbUser = "cs313_admin";
+
+	$openShiftVar = getenv('OPENSHIFT_MYSQL_DB_HOST');
+
+	if ($openShiftVar === null || $openShiftVar == "")
+	{
+     		// LOCAL ONLY
+		$dbHost = "localhost";
+		$dbUser = "cs313_admin";
+	} else {
+    // For web
+		$dbHost = "127.12.98.2";
+		$dbUser = "cs313_admin";
+	}
+
 	$dbPassword = "Z35Zxz37mzUeMhRP";
 	$dbName = "who_borrowed_what";
 	$connTest = "";
@@ -65,16 +73,16 @@ function validateMatchingPassword($password, $confirmPassword) {
 
 // Hash a password
 function hashPassword($password) {
-   return crypt($password, '$5$rounds=5000$yabad507abadoori$');
+	return crypt($password, '$5$rounds=5000$yabad507abadoori$');
 }
 
 // Validates dates
 function validateDate($date) {
-   if (0 === preg_match("/^(\d\d\d\d)-(\d\d)-(\d\d)$/", $date)) {
-      return true;
-   } else {
-      return false;
-   }
+	if (0 === preg_match("/^(\d\d\d\d)-(\d\d)-(\d\d)$/", $date)) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 function personalizedWelcome() {
