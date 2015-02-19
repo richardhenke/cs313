@@ -40,7 +40,7 @@ if (isset($_SESSION['loggedin'])) {
 <body>
 	<div class="filter"></div>
 	<div class='popout'>
-		<form action="." method="POST" class='newTransaction'>
+		<form action="register.php" method="POST" class='newTransaction'>
 
 			<label for='name_first'>First Name:</label>
 			<input required type='text' name='name_first' id='name_first'>
