@@ -24,7 +24,18 @@ function getUsers() {
 	}
 }
 
-function getLentTransactions($user_id) {
+//  1 to return active
+//  0 for not active
+// -1 all tansactions
+function getLentTransactions($user_id, $active) {
+	if ($active == 1) {
+		$active = "AND t.active = 'YES'";
+	} else if ($active == 0) {
+		$active = "AND t.active = 'NO'";
+	} else {
+		$active = '';
+	}
+
 	$conn = connectDb();
 
 	try {
@@ -35,7 +46,7 @@ function getLentTransactions($user_id) {
 		INNER JOIN user u 
 		INNER JOIN account a
 		ON u.user_id = t.borrower_id 
-		AND t.active = 'YES'
+		$active
 		AND a.user_id = t.borrower_id
 		AND i.item_id = t.item_id
 		ORDER BY t.transaction_id DESC";
@@ -53,7 +64,18 @@ function getLentTransactions($user_id) {
 	}
 }
 
-function getBorrowedTransactions($user_id) {
+//  1 to return active
+//  0 for not active
+// -1 all tansactions
+function getBorrowedTransactions($user_id, $active) {
+	if ($active == 1) {
+		$active = "AND t.active = 'YES'";
+	} else if ($active == 0) {
+		$active = "AND t.active = 'NO'";
+	} else {
+		$active = '';
+	}
+
 	$conn = connectDb();
 
 	try {
@@ -64,10 +86,10 @@ function getBorrowedTransactions($user_id) {
 		INNER JOIN user u 
 		INNER JOIN account a
 		ON u.user_id = t.owner_id 
-		AND t.active = 'YES'
+		$active
 		AND a.user_id = t.owner_id
 		AND i.item_id = t.item_id
-		ORDER BY t.transaction_id DESC";
+		ORDER BY (t.transaction_id AND t.active) DESC";
 		$stmt = $conn->prepare($sql);
 		$stmt->execute();
 		$data = $stmt->fetchAll();

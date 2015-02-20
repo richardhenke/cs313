@@ -1,12 +1,12 @@
 <?php 
 // Get access to the session
 if (!isset($_SESSION)) {
-  session_start();
+ session_start();
   // If they haven't logged in then pull up login screen
-  if (!isset($_SESSION['loggedin'])) {
-     header("Location: login.php");
-     die();
-  }
+ if (!isset($_SESSION['loggedin'])) {
+    header("Location: login.php");
+    die();
+ }
 }
 // This variable will be used to display information about submissions or data changes
 $message = "";
@@ -34,23 +34,18 @@ include 'library/functions.php';
 </header>
 
 <main>
-   <div class='side_nav'> 
-      <ul>
-         <li><a href='?name=nt'>New Transation</a></li>
-         <li>Borrowed History</li>
-         <li>Lent History</li>
-      </ul>
-   </div>
+   <!-- Show side nav bar -->
+   <?php include 'modules/sideNavBar.php'; ?>
 
    <div class='main_content'>
       <?php
       if (!empty($_GET) && $_GET['name'] == "nt") {
          include "modules/newTransaction.php";
+      } else if (!empty($_GET) && $_GET['name'] == "th") {
+         include 'modules/transactionHistory.php';
       } else if (!empty($_POST['upload'])) {
          if (!empty($_FILES['fileToUpload']['name'])) {
             $message = imageUpload(isset($_POST));
-            //$item_picture = "pictures/items/" . basename($_FILES["fileToUpload"]["name"]);
-            // Place the model INSERT function here and pass item_picture in 
             createTransaction($_SESSION['item_picture']);
             include "modules/transactionsView.php";
          } else {

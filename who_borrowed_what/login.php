@@ -29,7 +29,9 @@ if (!isset($_SESSION['loggedin'])) {
      header("Location: home.php");
      die();
    } else {
-    $message = "There was an error in logging in: ";
+    $_SESSION['message'] = "There was an error in logging in: ";
+    header("Location: login.php");
+    die();
   }
   // Check if user wants to register
 } else if (isset($_GET['name']) && $_GET['name'] == 'r') {
@@ -48,9 +50,11 @@ if (!isset($_SESSION['loggedin'])) {
 <body>
   <div class="filter"></div>
   <div class='popout'>
-  <form action="login.php" method='POST'>
+    <form action="login.php" method='POST'>
      <?php
-     echo "<p>".$message."</p>";
+     echo "<p>";
+     if (isset($_SESSION['message'])) {displayMessage($_SESSION['message']);}
+     echo "</p>";
      ?>
 
      <label >Email:</label>

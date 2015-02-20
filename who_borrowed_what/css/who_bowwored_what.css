@@ -5,15 +5,22 @@ body {
 /*----- Header -----*/
 header {
 	background-color:#252525;
+	height:50px;
+	text-align:center;
 }
+
 #logo {
 	background-color: teal;
+	line-height:50px;	
 	display: inline-block;
+	float: left;
 }
+
 #personalized_welcome {
 	background-color: maroon;
-	display: inline-block;
+	display:inline-block;
 	float:right;
+	top:0px;
 }
 /*------ Main -------*/
 main {
@@ -28,6 +35,8 @@ main {
 	background-color:#2D7A97;
 	float:left;
 	text-align:left;
+	width: 150px;
+	min-width:100px;
 
 }
 .side_nav ul {
@@ -42,11 +51,7 @@ main {
 	background-color:purple;
 	display:inline-block;
 	width:65%;
-
-	margin-top:4em;
 	margin-bottom:4em;
-	
-
 }
 /*--- Footer -----*/
 footer {
@@ -54,46 +59,91 @@ footer {
 	padding:1px;
 }
 
-img {
-	width: 100%;
-	display:inline-block;
+/*--- Transaction -----*/
+.transaction {
+	display:block;
 }
 
 .trans_left {
 	background-color:green;
 	display:inline-block;
-	width:25%;
+	width:33%;
+	min-width:250px;
 }
-.trans_item_name {
-	display:block;
+
+.trans_middle {
+	display:inline-block;
+	vertical-align:top;
+	margin-top:9%;
+	width:10%;
+	min-width:150px;
 }
-.trans_user_name {
-	display:block;
-}
+
 .trans_right {
 	background-color:red;
 	display:inline-block;
-	width:25%;
+	width:33%;
+	min-width:250px;
+}
+
+.trans_user_picture {
+	display:inline-block;
+	width: 150px;
+	height:150px;
+	border:white solid 2px;
+	border-radius:50%;
+}
+
+.trans_item_picture {
+	display:inline-block;
+	height:150px;
+	border-radius:7%;
+	border:white solid 2px;
+	width:200px;
+}
+
+.trans_item_name {
+	display:block;
+}
+
+.trans_user_name {
+	display:block;
+}
+
+.to_or_from {
+	color:white;
+	font-size:2em;
+	line-height:100%;
+	display:inline-block;
+	width:20%;
+	min-width:90px;	
+}
+
+.personal_name {
+	display:block;
+}
+
+.trans_complete {
+	display:block;
 }
 
 .filter {
-background-image: url("../pictures/backgrounds/bg.png");
-        width:100%;
-        height:100%;
-        position:fixed;
-    	z-index:1;
-
+	background-image: url("../pictures/backgrounds/bg.png");
+	width:100%;
+	height:100%;
+	position:fixed;
+	z-index:1;
 }
 
 .popout {
 	
-    position:fixed;
-    left: 50%;
-    top: 50%;
-    background-color: white;
-    z-index: 100;
-    margin-top: -20px;
-    margin-left:-15%;
+	position:fixed;
+	left: 50%;
+	top: 50%;
+	background-color: white;
+	z-index: 100;
+	margin-top: -20px;
+	margin-left:-15%;
 	background-image: url("../pictures/backgrounds/bg.png");
 	
 }
@@ -101,28 +151,7 @@ background-image: url("../pictures/backgrounds/bg.png");
 .personal_profile_pic img {
 	width:50px;
 	height: 50px;
-}
-
-.personal_name {
-	display:block;
-}
-
-.arrow-right {
-	width: 0; 
-	height: 0; 
-	border-top: 30px solid transparent;
-	border-bottom: 30px solid transparent;
-	border-left: 50px solid white;
-	display:inline-block;
-}
-.to_or_from {
-	color:white;
-	font-size:2em;
-	line-height:100%;
-	display:inline-block;
-	width:20%;
-	min-width:90px;
-	
+	border-radius:0px;
 }
 
 .main_content h1 {
@@ -140,11 +169,70 @@ background-image: url("../pictures/backgrounds/bg.png");
 }
 
 
+@media screen and (max-width: 1000px) {
+.main_content {
+	background-color:red;	
+}
+.transaction {
+display:block;
+text-align:center;
+}
+.trans_left, .trans_right {
+	min-width:204px;
+}
+@media screen and (min-width: 700px) and (max-width: 858px) {
+	.transaction .trans_item_picture {
+		width:180px;
+	}
+	.trans_left, .trans_right {
+	min-width:190px;
+}
+.trans_middle {
+	font-size:0.8em;
+	min-width:15%;
+	margin-top:13%;
+}
+}
+@media screen and (max-width: 700px) {
+	.main_content {
+	background-color:blue;
+	display:block;
+	display:inline-block;
+}
+.side_nav {
+	float:none;
+	text-align:center;
+	display:inline-block;
+	width:65%;
+}
+
+#personalized_welcome {
+	background-color:blue;
+	position:fixed;
+	z-index:-1;
+	
+}
+
+.transaction {
+	width:100%;
+	margin:auto;
+}
+.trans_left, .trans_right {
+	min-width:220px;
+	margin-left:10%;
+	margin-right:10%;
+}
+
+
+}
+
+
+
 
 /*---
 
-verticle-align:middle;
-verticle-align:top;
-verticle-align:bottom;
+vertical-align:middle;
+vertical-align:top;
+vertical-align:bottom;
 
 --*/

@@ -1,6 +1,7 @@
 <?php
 function connectDb()
 {
+	$message = "";
 	$openShiftVar = getenv('OPENSHIFT_MYSQL_DB_HOST');
 
 	if ($openShiftVar === null || $openShiftVar == "")
@@ -22,32 +23,33 @@ function connectDb()
 	try {
 		$connTest = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPassword);
 	} catch (PDOException $exc) {
-		echo "Sorry the connection could not be established";
+		$message = "Sorry the connection could not be established";
 	}
 
 	if (is_object($connTest)) {
 		return $connTest;
 	} else {
-		$errorMessage = "There was an error with the database.";
+		$message = "There was an error with the database.";
 	}
-	return $connTest;
+	return $message;
 }
 
 function login($email, $password) {
+	$message = "";
 	$sanEmail = validateEmail($email);
 	if(doesUserExist($sanEmail)) {
 		$userInfo = userLogin($sanEmail, $password);
 		if ($userInfo == 0) {
-			echo "Oops! There was a problem connecting to the database.";
+			$message = "Oops! There was a problem connecting to the database.";
 		} elseif ($userInfo == FALSE) {
-			echo "Plese check your login information and try again.";
+			$message = "Plese check your login information and try again.";
 		} else {
 			return $userInfo;
 		}
 	} else {
-		echo "Plese check your login information and try again.";
+		$message = "Plese check your login information and try again.";
 	}
-
+	return $message;
 }
 // Validates a string and strips extra characters
 function validateString($string) {
@@ -163,4 +165,15 @@ function registerUser() {
 function displayMessage($message) {
 	echo "<p class='message'> $message </p>";
 }
+
+function displayTransaction($value) {
+	echo "<div class='transaction'><div class='trans_left'>";
+	echo "<img class='trans_item_picture' src='" . $value['item_picture'] . "' /><span class='trans_item_name'>". $value['name'] . "</span></div>";
+	echo "<div class='trans_middle'>";
+	echo "<span class='to_or_from'>From</span>";
+	echo "</div>";         
+	echo "<div class='trans_right'> <img class='trans_user_picture' src='" . $value['profile_picture'] . "' /><span class='trans_user_name'>" . $value['name_first'] . " " . $value['name_last'] . "</span></div>";
+	echo "</div>";
+}
+
 ?>
