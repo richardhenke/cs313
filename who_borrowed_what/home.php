@@ -29,7 +29,9 @@ include 'library/functions.php';
 </div>
 
 <header class='main_nav'>
-   <div id='logo'>Logo</div>
+   <div id='logo'>
+      <a href='home.php'>WBW</a>
+   </div>
    <div id='personalized_welcome'><?php personalizedWelcome();?></div>
 </header>
 
@@ -42,26 +44,39 @@ include 'library/functions.php';
       if (!empty($_GET) && $_GET['name'] == "nt") {
          include "modules/newTransaction.php";
       } else if (!empty($_GET) && $_GET['name'] == "th") {
+         $_SESSION['FROM_URL'] = $_SERVER['QUERY_STRING'];
          include 'modules/transactionHistory.php';
+      } else if (!empty($_GET) && $_GET['name'] == "ct") {
+         updateTransaction($_GET['value'], "NO");
+         if (isset($_SESSION['FROM_URL'])) {
+            parse_str($_SESSION['FROM_URL']);
+            if ($name == 'th') {           
+               include "modules/transactionHistory.php";
+            }
+            unset($_SESSION['FROM_URL']);
+         } else {
+            include "modules/transactionsView.php";
+         }    
       } else if (!empty($_POST['upload'])) {
          if (!empty($_FILES['fileToUpload']['name'])) {
-            $message = imageUpload(isset($_POST));
-            createTransaction($_SESSION['item_picture']);
+            $okToUpload = imageUpload(isset($_POST));
+            if ($okToUpload) {
+               createTransaction($_SESSION['item_picture']);
+            }
             include "modules/transactionsView.php";
          } else {
-            $message = "You didn't select a file to upload.";
+            $_SESSION['message'] = "You didn't select a file to upload.";
          }
       } else {
          include "modules/transactionsView.php";
       }
       ?>
    </div>
-
 </div>
 </main>
 
 <footer>
-   <p>Footer</p>
+   <p>Copyright (c) 2015 Richard Henke</p>
    <p><?php echo 'Last Updated: ' . date('j F, Y', getlastmod()); ?></p>
 </footer>
 

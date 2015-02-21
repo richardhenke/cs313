@@ -1,12 +1,12 @@
       <!-- Main Content Module: Transactions view -->
       <!-- Print message if any -->
-      <?php displayMessage($message); ?>
+      <?php if (isset($_SESSION['message'])) {displayMessage($_SESSION['message']); } ?>
       <h1><?php echo $_SESSION['name_first'] . "'s Borrowed History";?></h1>
       <div class='borrowed_view'>
         <?php 
         $borrowedTransactions = getBorrowedTransactions($_SESSION['user_id'], -1);
         foreach ($borrowedTransactions as $key => $value) {
-          displayTransaction($value);
+          displayBorrowedTransaction($value);
        }
        ?>
 
@@ -16,6 +16,6 @@
       <?php 
       $lentTransactions = getLentTransactions($_SESSION['user_id'], -1);
       foreach ($lentTransactions as $key => $value) {
-       displayTransaction($value);
+       displayLentTransaction($value);
      }
      ?>

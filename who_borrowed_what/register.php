@@ -62,7 +62,7 @@ if (isset($_SESSION['loggedin'])) {
 
 			<input required type="submit" value="Register" name="submited">
 		</form>
-		<a href='?name=l'>Back to Login Screen</a>
+		<a class='custom_button' href='?name=l'>Back to Login Screen</a>
 	</div>
 </body>
 </html>

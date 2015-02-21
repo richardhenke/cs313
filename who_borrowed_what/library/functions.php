@@ -90,12 +90,10 @@ function validateDate($date) {
 function personalizedWelcome() {
 	echo "<span class='personal_profile_pic'><img src='" . $_SESSION['profile_picture'] . "'/></span>";
 	echo "<span class='personal_name'>$_SESSION[name_first]</span>";
-	echo "<span class='logout'><a href='logout.php'>Logout</a></span>";
 }
 
 // This one works! 2/18/15 at 1:30am
 function imageUpload() {
-	$message = "";
 	$target_dir = "pictures/items/";
 	$itemNumber = getItemNumber();
 	$num = $itemNumber[0][0];
@@ -106,44 +104,50 @@ function imageUpload() {
 	$_SESSION['item_picture'] = $target_file;
 	$uploadOk = 1;
 	$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-// Check if image file is a actual image or fake image
-	if(isset($_POST["upload"])) {
-		$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-		if($check !== false) {
-			$message = "File is an image - " . $check["mime"] . ".";
-			$uploadOk = 1;
-		} else {
-			$message = "File is not an image.";
-			$uploadOk = 0;
+
+	try {
+		// Check if image file is a actual image or fake image
+		if(isset($_POST["upload"])) {
+			$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+			if($check !== false) {
+				$_SESSION['message'] = "File is an image - " . $check["mime"] . ".";
+				$uploadOk = 1;
+			} else {
+				$uploadOk = 0;
+				throw new Exception("File is not an image.");
+			}
 		}
-	}
 // Check if file already exists
-	if (file_exists($target_file)) {
-		$message = "Sorry, file already exists.";
-		$uploadOk = 0;
-	}
-// Check file size
-	if ($_FILES["fileToUpload"]["size"] > 500000) {
-		$message = "Sorry, your file is too large.";
-		$uploadOk = 0;
-	}
-// Allow certain file formats
-	if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-		$message = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-		$uploadOk = 0;
-	}
-// Check if $uploadOk is set to 0 by an error
-	if ($uploadOk == 0) {
-		$message = "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
-	} else {
-		if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-			$message = "The file " . $newFilename . " has been uploaded.";
-		} else {
-			$message = "Sorry, there was an error uploading your file.";
+		if (file_exists($target_file)) {
+			$uploadOk = 0;
+			throw new Exception("Sorry, file already exists.");
 		}
+// Check file size
+		if ($_FILES["fileToUpload"]["size"] > 500000) {
+			$uploadOk = 0;
+			throw new Exception("Sorry, your file is too large.");
+		}
+// Allow certain file formats
+		if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+			$uploadOk = 0;
+			throw new Exception("Sorry, only JPG, JPEG, PNG & GIF files are allowed.");
+		}
+// Check if $uploadOk is set to 0 by an error
+		if ($uploadOk == 0) {
+			throw new Exception("Sorry, your file was not uploaded.");
+// if everything is ok, try to upload file
+		} else {
+			if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+				throw new Exception("The image " . '"' . $_FILES["fileToUpload"]["name"] . '"' . " has been uploaded.");
+			} else {
+				throw new Exception("Sorry, there was an error uploading your file.");
+			}
+		}
+	} catch (Exception $e) {
+		$_SESSION['message'] = $e->getMessage();
 	}
-	return $message;
+
+	return $uploadOk;
 }
 
 function registerUser() {
@@ -164,15 +168,59 @@ function registerUser() {
 
 function displayMessage($message) {
 	echo "<p class='message'> $message </p>";
+	unset($_SESSION['message']);
 }
 
-function displayTransaction($value) {
+function displayBorrowedTransaction($value) {
+	$created = date( 'F d, Y', strtotime($value['date_created']));
+	$return = $value['return_date'];
+	if ($return == '0000-00-00') {
+		$return = "Not Specified";
+	} else {
+		$return = date( 'F d, Y', strtotime($value['return_date']));
+	}
 	echo "<div class='transaction'><div class='trans_left'>";
-	echo "<img class='trans_item_picture' src='" . $value['item_picture'] . "' /><span class='trans_item_name'>". $value['name'] . "</span></div>";
+	echo "<img class='trans_item_picture' src='" . $value['item_picture'] . "' />";
+	echo "<span class='trans_item_name'>". $value['name'] . "</span>";
+	echo "<div class='trans_details'>";
+	echo "<span class='trans_date_created'>Borrowed on: " . date( 'F d, Y', strtotime($value['date_created'])) . "</span>";
+	echo "<span class='trans_return_date'>Return by: " . date( 'F d, Y', strtotime($value['return_date'])) . "</span>";
+	echo "</div></div>";
 	echo "<div class='trans_middle'>";
 	echo "<span class='to_or_from'>From</span>";
 	echo "</div>";         
-	echo "<div class='trans_right'> <img class='trans_user_picture' src='" . $value['profile_picture'] . "' /><span class='trans_user_name'>" . $value['name_first'] . " " . $value['name_last'] . "</span></div>";
+	echo "<div class='trans_right'> <img class='trans_user_picture' src='" . $value['profile_picture'] . "' /><span class='trans_user_name'>" . $value['name_first'] . " " . $value['name_last'] . "</span>";
+	echo "<div class='trans_details'>";
+	
+	echo "</div>";
+	echo "</div>";
+	echo "</div>";
+}
+
+function displayLentTransaction($value) {
+	$created = date( 'F d, Y', strtotime($value['date_created']));
+	$return = $value['return_date'];
+	if ($return == '0000-00-00') {
+		$return = "Not Specified";
+	} else {
+		$return = date( 'F d, Y', strtotime($value['return_date']));
+	}
+	echo "<div class='transaction'><div class='trans_left'>";
+	echo "<img class='trans_item_picture' src='" . $value['item_picture'] . "' />";
+	echo "<span class='trans_item_name'>". $value['name'] . "</span>";
+	echo "<div class='trans_details'>";
+	echo "<span class='trans_date_created'>Borrowed on: " . $created . "</span>";
+	echo "<span class='trans_return_date'>Return by: " . $return . "</span>";
+	echo "</div></div>";
+	echo "<div class='trans_middle'>";
+	echo "<span class='to_or_from'>To</span>";
+	echo "<span class='trans_complete'><a href='?name=ct&value=$value[transaction_id]'>Complete</a></span>";
+	echo "</div>";         
+	echo "<div class='trans_right'> <img class='trans_user_picture' src='" . $value['profile_picture'] . "' /><span class='trans_user_name'>" . $value['name_first'] . " " . $value['name_last'] . "</span>";
+	echo "<div class='trans_details'>";
+	
+	echo "</div>";
+	echo "</div>";
 	echo "</div>";
 }
 

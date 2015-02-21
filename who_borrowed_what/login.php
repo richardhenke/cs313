@@ -64,7 +64,7 @@ if (!isset($_SESSION['loggedin'])) {
      <input type="password" name="password" required >
      <input type="submit" value="Login" name='submited'>
    </form>
-   <a href='?name=r'>Register</a>
+   <a class='custom_button' href='?name=r'>Register</a>
  </div>
 
 </body>

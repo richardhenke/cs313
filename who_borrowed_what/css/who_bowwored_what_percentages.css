@@ -1,0 +1,192 @@
+/*----- Body -----*/
+body {
+	margin:auto;
+}
+/*----- Header -----*/
+header {
+	background-color:#252525;
+	height:50px;
+	text-align:center;
+}
+
+#logo {
+	background-color: teal;
+	line-height:50px;	
+	display: inline-block;
+	float: left;
+}
+
+#personalized_welcome {
+	background-color: maroon;
+	display:inline-block;
+	float:right;
+	top:0px;
+}
+/*------ Main -------*/
+main {
+	background-color:#373737;
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
+
+/*----- Side Nav ------*/
+.side_nav {
+	background-color:#2D7A97;
+	float:left;
+	text-align:left;
+	width: 150px;
+	min-width:100px;
+
+}
+.side_nav ul {
+	list-style-type: none;
+	padding:0px;
+}
+.side_nav ul li{ 
+	padding:1% 15%;
+}
+/*----- Main Content ----*/
+.main_content {
+	background-color:purple;
+	display:inline-block;
+	width:65%;
+	margin-bottom:4em;
+}
+/*--- Footer -----*/
+footer {
+	background-color:#252525;
+	padding:1px;
+}
+
+/*--- Transaction -----*/
+.transaction {
+	background-color:yellow;
+	display:block;
+	margin-bottom:15px;
+	height:250px;
+}
+
+.trans_left {
+	background-color:green;
+	float:left;
+	width:33.33%;
+	height:250px;
+}
+
+.trans_middle {
+	float:left;
+	vertical-align:top;
+	margin-top:9%;
+	width:33.33%;
+}
+
+.trans_right {
+	background-color:red;
+	float:left;
+	width:33.33%;
+	height:250px;
+}
+
+.trans_user_picture {
+	display:inline-block;
+	width: 70%;
+	height:70%;
+	border:white solid 2px;
+	border-radius:50%;
+}
+
+.trans_item_picture {
+	display:inline-block;
+	height:60%;
+	border-radius:7%;
+	border:white solid 2px;
+	width:70%;
+}
+
+.trans_item_name {
+	display:block;
+}
+
+.trans_user_name {
+	display:block;
+}
+
+.to_or_from {
+	color:white;
+	font-size:2em;
+	line-height:100%;
+	display:inline-block;
+	width:20%;
+	min-width:90px;	
+}
+
+.personal_name {
+	display:block;
+}
+
+.trans_complete {
+	display:block;
+}
+.trans_details {
+	background-color:red;
+	text-align:left;
+	margin: 0px 0px 0px 0px ;
+}
+.trans_date_created, .trans_return_date {
+	display:block;
+	margin:0px 0px 0px 10px;
+}
+
+
+.filter {
+	background-image: url("../pictures/backgrounds/bg.png");
+	width:100%;
+	height:100%;
+	position:fixed;
+	z-index:1;
+}
+
+.popout {
+	
+	position:fixed;
+	left: 50%;
+	top: 50%;
+	background-color: white;
+	z-index: 100;
+	margin-top: -20px;
+	margin-left:-15%;
+	background-image: url("../pictures/backgrounds/bg.png");
+	
+}
+
+.personal_profile_pic img {
+	width:50px;
+	height: 50px;
+	border-radius:0px;
+}
+
+.main_content h1 {
+	background-color:white;
+	margin:0px;
+}
+.newTransaction {
+	display:inline-block;
+	background-color:white;
+	margin:auto;
+}
+.newTransaction label, input, textarea, select {
+	display:block;
+	text-align:left;
+}
+
+
+
+
+/*---
+
+vertical-align:middle;
+vertical-align:top;
+vertical-align:bottom;
+
+--*/

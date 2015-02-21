@@ -39,7 +39,7 @@ function getLentTransactions($user_id, $active) {
 	$conn = connectDb();
 
 	try {
-		$sql = "SELECT u.name_first, u.name_last,  a.profile_picture, i.name, i.item_picture, t.date_created, t.return_date
+		$sql = "SELECT u.name_first, u.name_last,  a.profile_picture, i.name, i.item_picture, t.date_created, t.return_date, t.transaction_id
 		FROM item i 
 		INNER JOIN transaction t 
 		ON t.owner_id = $user_id 
@@ -79,7 +79,7 @@ function getBorrowedTransactions($user_id, $active) {
 	$conn = connectDb();
 
 	try {
-		$sql = "SELECT u.name_first, u.name_last,  a.profile_picture, i.name, i.item_picture, t.date_created, t.return_date
+		$sql = "SELECT u.name_first, u.name_last,  a.profile_picture, i.name, i.item_picture, t.date_created, t.return_date, t.transaction_id
 		FROM item i 
 		INNER JOIN transaction t 
 		ON t.borrower_id = $user_id
@@ -321,4 +321,34 @@ function getItemNumber() {
 
 // End of function
 }
+
+function updateTransaction($transaction_id, $yesOrNo) {
+	$conn = connectDb(); // The server connection
+	try {
+      $sql = "UPDATE transaction SET
+              active = :yesOrNo, last_updated = :update_date WHERE transaction_id = :id";
+      $stmt = $conn->prepare($sql);
+      $stmt->bindValue(':id', $transaction_id, PDO::PARAM_INT);
+      $stmt->bindValue(':yesOrNo', $yesOrNo, PDO::PARAM_STR);
+      $stmt->bindValue(':update_date', date("Y-m-d"), PDO::PARAM_STR);
+      $stmt->execute();
+      $stmt->fetchAll();
+      $updateResult = $stmt->rowCount();      
+      $stmt->closeCursor();      
+   } catch (PDOException $ex) {
+      $_SESSION['message'] = 'PDO error in model.';
+   }
+   
+   // $updateResult will return either a 1 or a 0
+   if ($updateResult) {
+      return TRUE;
+   } else {
+      return FALSE;
+   }
+
+// End of function
+}
+
+
+
 ?>
