@@ -49,7 +49,7 @@ if (!isset($_SESSION['loggedin'])) {
 </head>
 <body>
   <div class="filter"></div>
-  <div class='popout'>
+  <div class='login'>
     <form action="login.php" method='POST'>
      <?php
      echo "<p>";
@@ -62,9 +62,12 @@ if (!isset($_SESSION['loggedin'])) {
 
      <label >Password:</label>
      <input type="password" name="password" required >
-     <input type="submit" value="Login" name='submited'>
+     <span id='button_wrapper'>
+       <input type="submit" value="Login" name='submited'>
+       <a class='custom_button' href='?name=r'>Register</a>
+     </span>
    </form>
-   <a class='custom_button' href='?name=r'>Register</a>
+
  </div>
 
 </body>

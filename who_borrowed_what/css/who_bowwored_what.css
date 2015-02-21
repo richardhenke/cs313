@@ -118,6 +118,16 @@ main h1 {
 .side_nav ul li { 
 	padding:1% 15%;
 }
+.side_nav ul li:hover {
+background: rgba(0, 0, 0, 0.1);
+border-radius:10px;
+}
+
+.side_nav ul li:hover a {
+  color: white;
+  width:100%;
+}
+
 /*----- Main Content ----*/
 .main_content {
 	background-color:#373737;
@@ -213,28 +223,6 @@ footer {
 	margin:0px 0px 0px 10px;
 }
 
-
-.filter {
-	background-image: url("../pictures/backgrounds/bg.png");
-	width:100%;
-	height:100%;
-	position:fixed;
-	z-index:1;
-}
-
-.popout {
-	
-	position:fixed;
-	left: 50%;
-	top: 50%;
-	background-color: white;
-	z-index: 100;
-	margin-top: -20px;
-	margin-left:-15%;
-	background-image: url("../pictures/backgrounds/bg.png");
-	
-}
-
 .main_content h1 {
 	background-color:white;
 	margin:0px;
@@ -250,8 +238,23 @@ footer {
 }
 
 footer {
+	color:#bbb;
 	text-align:center;
+	height:50px;
 }
+#footer_wrapper {
+	display:inline-block;
+}
+footer > * {
+	display:inline-block;
+}
+#copyright {
+	margin-right:1%;
+}
+#footer_date {
+	margin-left:1%;
+}
+
 
 form {
 	background-image: url("../pictures/backgrounds/bg.png");
@@ -259,7 +262,7 @@ form {
 }
 
 
-input[type=text], input[type=password], input[type=email] {
+input[type=text], input[type=password], input[type=email], input[type=date], select {
   padding: 0 10px;
   width: 300px;
   height: 40px;
@@ -275,13 +278,112 @@ input[type=text], input[type=password], input[type=email] {
 textarea {
 	width:100%;
 	height:24px;
+	border-color:black;
 }
 
-input[type=text]:focus, input[type=password]:focus, textarea, input[type=email]:focus {
+input[type=text]:focus, input[type=password]:focus, textarea, input[type=email]:focus, input[type=date]:focus, select  {
   color: white;
   background: rgba(0, 0, 0, 0.1);
   outline: 0;
 }
+form a:link, a:visited, a:hover, a:active {
+	text-decoration: none;
+	color:black;
+}
+
+main .transaction .custom_button {
+	margin-top:15%;
+}
+
+form #button_wrapper .custom_button, input[type=submit], form a, .transaction .custom_button {
+	font-size:0px;
+	font-size:1em;
+	font-family: 'Averia Gruesa Libre', cursive;
+	display:inline-block;
+	background-color:#eee;
+	width:70px;
+	height:30px;
+	text-align:center;
+	vertical-align:middle;
+	border:0px;
+	padding:0px;
+	line-height:30px;
+	margin: 0px 25px;
+}
+#fileToUpload::-webkit-file-upload-button {
+	margin-top:15px;
+  visibility: hidden;
+}
+#fileToUpload::before {
+  content: 'Select ';
+  display: inline-block;
+  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+
+form #button_wrapper_block {
+	display:block;
+	margin-top:15px;
+}
+input[name=upload] {
+	margin-top:30px;
+	margin-left:0px;
+}
+
+#button_wrapper {
+	display:block;
+	text-align:center;
+	margin-top:15px;
+}
+
+
+.filter {
+	background-image: url("../pictures/backgrounds/bg.png");
+	width:100%;
+	height:100%;
+	position:fixed;
+	z-index:-1;
+}
+
+
+.login {
+	position:fixed;
+	left: 50%;
+	top: 40%;
+	margin-top: -20px;
+	margin-left:-15%;
+}
+
+.register {
+	position:fixed;
+	left: 50%;
+	top: 20%;
+	margin-top: -20px;
+	margin-left:-15%;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 1000px white inset;
+}
+
+
+
 
 
 /*---

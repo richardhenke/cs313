@@ -76,8 +76,9 @@ include 'library/functions.php';
 </main>
 
 <footer>
-   <p>Copyright (c) 2015 Richard Henke</p>
-   <p><?php echo 'Last Updated: ' . date('j F, Y', getlastmod()); ?></p>
+   <p id='copyright'>Copyright (c) 2015 Richard Henke</p>
+   <p>|</p>
+   <p id='footer_date'><?php echo 'Last Updated: ' . date('j F, Y', getlastmod()); ?></p>
 </footer>
 
 </body>

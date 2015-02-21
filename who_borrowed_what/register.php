@@ -39,7 +39,7 @@ if (isset($_SESSION['loggedin'])) {
 </head>
 <body>
 	<div class="filter"></div>
-	<div class='popout'>
+	<div class='register'>
 		<form action="register.php" method="POST" class='newTransaction'>
 
 			<label for='name_first'>First Name:</label>
@@ -59,10 +59,11 @@ if (isset($_SESSION['loggedin'])) {
 
 			<label for='password_confirm'>Confirm Password:</label>
 			<input required type='password' name='password_confirm' >
-
-			<input required type="submit" value="Register" name="submited">
+			<span id='button_wrapper'>
+				<input required type="submit" value="Register" name="submited">
+				<a class='custom_button' href='?name=l'>Login</a>
+			</span>
 		</form>
-		<a class='custom_button' href='?name=l'>Back to Login Screen</a>
 	</div>
 </body>
 </html>

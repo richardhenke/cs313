@@ -1,6 +1,6 @@
 
 <div>
-	<form action='home.php' method='POST' class='newTransaction' enctype='multipart/form-data'>
+	<form action='home.php' method='POST' class='newTransaction' enctype='multipart/form-data' autocomplete="off">
 		<?php displayMessage($message); ?>
 		<label for='lendTo'>Lend to:</label>
 		<?php 
@@ -27,9 +27,10 @@
 		<label for='return_date'>Return Date</label>
 		<input type='date' name='return_date' placeholder='YYYY-MM-DD'>
 
-
-		<label for='fileToUpload'>Item Image:</label>
-		<input type="file" name="fileToUpload" id="fileToUpload">
-		<input type="submit" value="Finished" name="upload">
+		<span id='button_wrapper_block'>
+			<label for='fileToUpload'>Item Image:</label>
+			<input type="file" name="fileToUpload" class='custom_button block' id="fileToUpload">
+		</span>
+		<input type="submit" value="Finished" name="upload" class='block'>
 	</form>
 </div>
