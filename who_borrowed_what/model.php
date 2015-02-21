@@ -39,7 +39,7 @@ function getLentTransactions($user_id, $active) {
 	$conn = connectDb();
 
 	try {
-		$sql = "SELECT u.name_first, u.name_last,  a.profile_picture, i.name, i.item_picture, t.date_created, t.return_date, t.transaction_id
+		$sql = "SELECT u.name_first, u.name_last,  a.profile_picture, i.name, i.item_picture, t.date_created, t.return_date, t.transaction_id, t.active
 		FROM item i 
 		INNER JOIN transaction t 
 		ON t.owner_id = $user_id 
@@ -49,7 +49,7 @@ function getLentTransactions($user_id, $active) {
 		$active
 		AND a.user_id = t.borrower_id
 		AND i.item_id = t.item_id
-		ORDER BY t.transaction_id DESC";
+		ORDER BY (t.transaction_id AND t.active) DESC";
 		$stmt = $conn->prepare($sql);
 		$stmt->execute();
 		$data = $stmt->fetchAll();

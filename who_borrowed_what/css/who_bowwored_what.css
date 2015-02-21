@@ -7,6 +7,7 @@
 /*----- Body -----*/
 body {
 	margin:auto;
+	color:#bbb;
 }
 /*----- Header -----*/
 header {
@@ -130,7 +131,6 @@ border-radius:10px;
 
 /*----- Main Content ----*/
 .main_content {
-	background-color:#373737;
 	display:inline-block;
 	width:65%;
 	margin-bottom:4em;
@@ -256,12 +256,6 @@ footer > * {
 }
 
 
-form {
-	background-image: url("../pictures/backgrounds/bg.png");
-	
-}
-
-
 input[type=text], input[type=password], input[type=email], input[type=date], select {
   padding: 0 10px;
   width: 300px;
@@ -273,6 +267,7 @@ input[type=text], input[type=password], input[type=email], input[type=date], sel
   border-radius: 5px;
   -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
   box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+  margin-bottom:15px;
 }
 
 textarea {
@@ -336,7 +331,9 @@ form #button_wrapper .custom_button, input[type=submit], form a, .transaction .c
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
 
-
+form {
+	background-image: url("../pictures/backgrounds/bg.png");
+}
 form #button_wrapper_block {
 	display:block;
 	margin-top:15px;

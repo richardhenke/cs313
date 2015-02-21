@@ -191,7 +191,6 @@ function displayBorrowedTransaction($value) {
 	echo "</div>";         
 	echo "<div class='trans_right'> <img class='trans_user_picture' src='" . $value['profile_picture'] . "' /><span class='trans_user_name'>" . $value['name_first'] . " " . $value['name_last'] . "</span>";
 	echo "<div class='trans_details'>";
-	
 	echo "</div>";
 	echo "</div>";
 	echo "</div>";
@@ -214,7 +213,9 @@ function displayLentTransaction($value) {
 	echo "</div></div>";
 	echo "<div class='trans_middle'>";
 	echo "<span class='to_or_from'>To</span>";
-	echo "<span class='trans_complete custom_button'><a href='?name=ct&value=$value[transaction_id]'>Complete</a></span>";
+	if ($value['active'] != "NO") {
+		echo "<span class='trans_complete custom_button'><a href='?name=ct&value=$value[transaction_id]'>Complete</a></span>";
+	}
 	echo "</div>";         
 	echo "<div class='trans_right'> <img class='trans_user_picture' src='" . $value['profile_picture'] . "' /><span class='trans_user_name'>" . $value['name_first'] . " " . $value['name_last'] . "</span>";
 	echo "</div>";

@@ -18,8 +18,7 @@ if (isset($_SESSION['loggedin'])) {
 	die();
 } else if (isset($_POST['submited']) && $_POST['submited'] == 'Register') {
     // Add new user to database
-	$message = registerUser();
-	echo "<br>Status: " . $message . "<br>";
+	$_SESSION['message'] = registerUser();
 	// Got to login page to sign in
 	header("Location: login.php");
 	die();
@@ -40,7 +39,7 @@ if (isset($_SESSION['loggedin'])) {
 <body>
 	<div class="filter"></div>
 	<div class='register'>
-		<form action="register.php" method="POST" class='newTransaction'>
+		<form action="register.php" method="POST" class='newTransaction' >
 
 			<label for='name_first'>First Name:</label>
 			<input required type='text' name='name_first' id='name_first'>
@@ -59,6 +58,7 @@ if (isset($_SESSION['loggedin'])) {
 
 			<label for='password_confirm'>Confirm Password:</label>
 			<input required type='password' name='password_confirm' >
+
 			<span id='button_wrapper'>
 				<input required type="submit" value="Register" name="submited">
 				<a class='custom_button' href='?name=l'>Login</a>
