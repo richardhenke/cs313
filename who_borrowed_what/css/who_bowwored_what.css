@@ -315,7 +315,6 @@ form #button_wrapper .custom_button, input[type=submit], form a, .transaction .c
 }
 #fileToUpload::-webkit-file-upload-button  {
 	margin-top:15px;
-  visibility: hidden;
   background-color:#eee;
 }
 #fileToUpload::before {
@@ -343,9 +342,26 @@ form #button_wrapper .custom_button, input[type=submit], form a, .transaction .c
 form {
 	background-image: url("../pictures/backgrounds/bg.png");
 }
+#fileToUpload.custom_button.block input
+{ 
+background-color:red;
+color:white;
+
+}
+input#fileToUpload.custom_button.block {
+	margin:5px;
+	width:57px;
+	border-radius:5px;
+	vertical-align:middle;
+	outline: 0;
+	display:inline-block;
+}
 form #button_wrapper_block {
 	display:block;
 	margin-top:15px;
+	text-align: left;
+	line-height:10px;
+	color:black;
 }
 input[name=upload] {
 	margin-top:30px;
@@ -358,7 +374,6 @@ input[name=upload] {
 	margin-top:15px;
 }
 
-
 .filter {
 	background-image: url("../pictures/backgrounds/bg.png");
 	width:100%;
@@ -366,7 +381,6 @@ input[name=upload] {
 	position:fixed;
 	z-index:-1;
 }
-
 
 .login {
 	position:fixed;

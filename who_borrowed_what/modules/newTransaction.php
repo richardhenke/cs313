@@ -16,21 +16,21 @@
 		?>
 
 		<label for='item_name'>Item Name:</label>
-		<input type='text' name='item_name' id='item_name'>
+		<input type='text' required name='item_name' id='item_name'>
 
 		<label for='tags'>Item Tag:</label>
-		<input type='text' name='tags' id='tags'>
+		<input type='text' required name='tags' id='tags'>
 
 		<label for='description'>Item Description:</label>
-		<textarea name='description' id='description'></textarea>
+		<textarea required name='description' id='description'></textarea>
 
 		<label for='return_date'>Return Date</label>
 		<input type='date' name='return_date' placeholder='YYYY-MM-DD'>
-
+		
+		<label for='fileToUpload'>Item Image:</label>
 		<span id='button_wrapper_block'>
-			<label for='fileToUpload'>Item Image:</label>
-			<input type="file" name="fileToUpload" class='custom_button block' id="fileToUpload">
+			<input type="file" required name='fileToUpload' class='custom_button block' id="fileToUpload">
 		</span>
-		<input type="submit" value="Finished" name="upload" class='block'>
+		<input type="submit" value="Finished"  name='upload' class='block'>
 	</form>
 </div>

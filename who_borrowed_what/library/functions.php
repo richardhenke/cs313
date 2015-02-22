@@ -123,9 +123,10 @@ function imageUpload() {
 			throw new Exception("Sorry, file already exists.");
 		}
 // Check file size
-		if ($_FILES["fileToUpload"]["size"] > 500000) {
+		$size = 500000;
+		if ($_FILES["fileToUpload"]["size"] > $size) {
 			$uploadOk = 0;
-			throw new Exception("Sorry, your file is too large.");
+			throw new Exception("Sorry, your file is too large. It must be less than: $size Kb");
 		}
 // Allow certain file formats
 		if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
