@@ -8,6 +8,7 @@
 body {
 	margin:auto;
 	color:#bbb;
+	
 }
 /*----- Header -----*/
 header {
@@ -16,6 +17,11 @@ header {
 	text-align:center;
 	position:fixed;
 	width:100%;
+	
+}
+.side_nav {
+	box-shadow:inset 13px -5px 160px 13px rgba(0,0,0,0.34);
+	
 }
 .side_nav a {
 	font-size:1.1em;
@@ -29,7 +35,7 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .side_nav a:link, .side_nav a:visited, .side_nav a:active {
-	color:#000;
+	color:#aaa;
 }
 
 #logo a {
@@ -96,6 +102,7 @@ main h1 {
 	background: -ms-linear-gradient(top,  #a90329 52%,#6d0019 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  #a90329 52%,#6d0019 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019',GradientType=0 ); /* IE6-9 */
+	color:black;
 }
 
 /*----- Side Nav ------*/
@@ -107,7 +114,7 @@ main h1 {
 	text-align:left;
 	width: 150px;
 	min-width:100px;
-	border-radius:1% 1% 15% 1%;
+	border-radius:1% 1% 5% 1%;
 	position:fixed;
 	margin-top:50px;
 }
@@ -281,16 +288,17 @@ input[type=text]:focus, input[type=password]:focus, textarea, input[type=email]:
   background: rgba(0, 0, 0, 0.1);
   outline: 0;
 }
-form a:link, a:visited, a:hover, a:active {
+form a:link, a:visited, a:hover, a:active, a {
 	text-decoration: none;
 	color:black;
 }
 
 main .transaction .custom_button {
 	margin-top:15%;
+	color:black;
 }
 
-form #button_wrapper .custom_button, input[type=submit], form a, .transaction .custom_button {
+form #button_wrapper .custom_button, input[type=submit], form a, .transaction .custom_button, input[type=file] {
 	font-size:0px;
 	font-size:1em;
 	font-family: 'Averia Gruesa Libre', cursive;
@@ -305,9 +313,10 @@ form #button_wrapper .custom_button, input[type=submit], form a, .transaction .c
 	line-height:30px;
 	margin: 0px 25px;
 }
-#fileToUpload::-webkit-file-upload-button {
+#fileToUpload::-webkit-file-upload-button  {
 	margin-top:15px;
   visibility: hidden;
+  background-color:#eee;
 }
 #fileToUpload::before {
   content: 'Select ';
@@ -378,34 +387,3 @@ input[name=upload] {
 input:-webkit-autofill {
     -webkit-box-shadow: 0 1000px white inset;
 }
-
-
-
-
-
-/*---
-
-vertical-align:middle;
-vertical-align:top;
-vertical-align:bottom;
-
-
-input[type=text], input[type=password] {
-  padding: 0 10px;
-  width: 300px;
-  height: 40px;
-  color: #bbb;
-  text-shadow: 1px 1px 1px black;
-  background: rgba(0, 0, 0, 0.16);
-  border: 0;
-  border-radius: 5px;
-  -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
-  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
-}
-input[type=text]:focus, input[type=password]:focus {
-  color: white;
-  background: rgba(0, 0, 0, 0.1);
-  outline: 0;
-}
-
---*/
