@@ -19,6 +19,7 @@
 			<div id="assignment_links">
 				<ul>
 					<li><a href="assignments/survey.php">Survey</a></li>
+					<li><a href="who_borrowed_what/index.php">Who Borrowed What</a></li>
 				</ul>
 			</div>
 		</div>
